@@ -41,6 +41,26 @@
     <style>
       html {
         scroll-behavior: smooth;
+        background-color: #0a0a0a;
+      }
+      body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background-color: #0a0a0a;
+        background-image: linear-gradient(
+            to bottom,
+            rgba(10, 10, 10, 0.45) 0%,
+            rgba(10, 10, 10, 0.7) 45%,
+            rgba(10, 10, 10, 0.92) 100%
+          ),
+          url('fundo.PNG');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
       }
       .gallery-scroll {
         -ms-overflow-style: none;
@@ -49,16 +69,31 @@
       .gallery-scroll::-webkit-scrollbar {
         display: none;
       }
+      #site-header {
+        transition:
+          transform 0.35s ease,
+          opacity 0.3s ease,
+          visibility 0.35s;
+      }
+      #site-header.site-header--hidden {
+        transform: translateY(-120%);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
     </style>
   </head>
-  <body class="bg-cream text-forest font-sans">
-    <header class="fixed top-0 left-0 z-50 w-full border-b border-white/10 bg-softblack/65 backdrop-blur-md">
+  <body class="min-h-screen text-forest font-sans">
+    <header
+      id="site-header"
+      class="fixed top-0 left-0 z-50 w-full border-b border-white/10 bg-softblack/65 backdrop-blur-md"
+    >
       <div class="grid w-full grid-cols-[1fr_auto_1fr] items-center gap-3 px-3 py-3 md:gap-4 md:px-8">
         <div class="flex min-w-0 justify-start">
           <nav class="hidden items-center gap-6 text-xs uppercase tracking-[0.3em] md:flex md:gap-8">
             <a href="#inicio" class="transition hover:text-champagne">Início</a>
-            <a href="#portfolio" class="transition hover:text-champagne">Portfólio</a>
-            <a href="#sobre" class="transition hover:text-champagne">Sobre Mim</a>
+            <a href="#portfolio" class="js-open-portfolio-modal transition hover:text-champagne">Portfólio</a>
+            <a href="#sobre" class="js-open-sobre-modal transition hover:text-champagne">Sobre Mim</a>
             <a href="#contato" class="transition hover:text-champagne">Contato</a>
           </nav>
         </div>
@@ -76,8 +111,8 @@
 
       <nav class="mx-auto flex max-w-7xl items-center justify-center gap-4 px-4 pb-3 text-xs uppercase tracking-[0.12em] md:hidden">
         <a href="#inicio" class="transition hover:text-champagne">Início</a>
-        <a href="#portfolio" class="transition hover:text-champagne">Portfólio</a>
-        <a href="#sobre" class="transition hover:text-champagne">Sobre</a>
+        <a href="#portfolio" class="js-open-portfolio-modal transition hover:text-champagne">Portfólio</a>
+        <a href="#sobre" class="js-open-sobre-modal transition hover:text-champagne">Sobre</a>
         <a href="#contato" class="transition hover:text-champagne">Contato</a>
       </nav>
     </header>
@@ -85,16 +120,8 @@
     <main>
       <section
         id="inicio"
-        class="relative flex min-h-screen items-center justify-center overflow-hidden px-4 pt-32 text-center md:px-8"
+        class="relative flex min-h-screen scroll-mt-28 items-center justify-center overflow-hidden px-4 pt-32 text-center md:px-8 md:scroll-mt-32"
       >
-        <img
-          src="fundo.PNG"
-          alt=""
-          class="absolute inset-0 h-full w-full object-cover"
-          role="presentation"
-        />
-        <div class="absolute inset-0 bg-gradient-to-b from-softblack/45 via-softblack/70 to-softblack"></div>
-
         <div class="relative z-10 mx-auto max-w-4xl text-forest">
           <p class="mb-4 font-sans text-xs uppercase tracking-[0.35em] text-champagne md:text-sm">
             Portfólio Premium
@@ -109,7 +136,7 @@
 
       </section>
 
-      <section id="portfolio" class="bg-softblack px-4 py-20 md:px-8">
+      <section id="portfolio" class="bg-softblack/80 px-4 py-20 backdrop-blur-xl md:px-8">
         <div class="mx-auto max-w-7xl">
           <div class="mb-10 text-center">
             <p class="font-sans text-xs uppercase tracking-[0.35em] text-blush">Coleção</p>
@@ -343,7 +370,7 @@
         </div>
       </section>
 
-      <section id="sobre" class="bg-[#121214] px-4 py-20 md:px-8">
+      <section id="sobre" class="bg-[#121214]/85 px-4 py-20 backdrop-blur-xl md:px-8">
         <div class="mx-auto grid max-w-6xl gap-10 md:grid-cols-2 md:items-center">
           <img
             src="perfil.jpeg"
@@ -363,7 +390,7 @@
       </section>
     </main>
 
-    <footer id="contato" class="border-t border-champagne/30 bg-softblack px-4 py-14 md:px-8">
+    <footer id="contato" class="border-t border-champagne/30 bg-softblack/85 px-4 py-14 backdrop-blur-xl md:px-8">
       <div class="mx-auto max-w-5xl text-center">
         <p class="text-sm text-forest/80">Atendimento personalizado para sessões exclusivas.</p>
 
@@ -406,6 +433,526 @@
         </div>
       </div>
     </footer>
+
+    <div
+      id="portfolio-modal"
+      class="fixed inset-0 z-[100] hidden min-h-0 flex-col text-forest"
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Galeria do portfólio"
+    >
+      <button
+        type="button"
+        id="portfolio-modal-backdrop"
+        class="absolute inset-0 z-0 cursor-default border-0 bg-black/40 p-0 backdrop-blur-2xl backdrop-saturate-150"
+        aria-label="Fechar galeria — toque fora ou use voltar do telemóvel"
+      ></button>
+      <div
+        id="portfolio-modal-panel"
+        class="relative z-10 flex min-h-0 flex-1 flex-col pointer-events-none [&>*]:pointer-events-auto"
+      >
+        <div class="min-h-0 flex-1 overflow-y-auto overscroll-contain bg-softblack/30 p-3 backdrop-blur-sm md:p-5">
+          <p class="mb-3 text-center text-xs text-forest/70 md:text-sm">Toque ou clique numa foto para ampliar.</p>
+          <div
+            id="portfolio-modal-grid"
+            class="mx-auto grid max-w-[1600px] grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="portfolio-lightbox"
+      class="fixed inset-0 z-[110] hidden items-center justify-center bg-black/45 p-4 backdrop-blur-2xl backdrop-saturate-150 md:p-10"
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Foto ampliada"
+    >
+      <button
+        type="button"
+        id="portfolio-lightbox-close"
+        class="absolute right-3 top-3 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-white/30 text-2xl leading-none text-champagne transition hover:bg-white/10 md:right-6 md:top-6"
+        aria-label="Fechar ampliação"
+      >
+        ×
+      </button>
+      <button
+        type="button"
+        id="portfolio-lightbox-prev"
+        class="absolute left-1 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-champagne/50 bg-softblack/80 text-xl text-champagne transition hover:bg-softblack md:left-4 md:h-12 md:w-12"
+        aria-label="Foto anterior"
+      >
+        ‹
+      </button>
+      <button
+        type="button"
+        id="portfolio-lightbox-next"
+        class="absolute right-1 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-champagne/50 bg-softblack/80 text-xl text-champagne transition hover:bg-softblack md:right-4 md:h-12 md:w-12"
+        aria-label="Próxima foto"
+      >
+        ›
+      </button>
+      <img
+        id="portfolio-lightbox-img"
+        src=""
+        alt=""
+        class="max-h-[88vh] max-w-full rounded-lg object-contain shadow-luxe ring-1 ring-white/10"
+      />
+    </div>
+
+    <div
+      id="sobre-blog-modal"
+      class="fixed inset-0 z-[120] hidden min-h-0 flex-col text-forest"
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="sobre-blog-title"
+    >
+      <button
+        type="button"
+        id="sobre-blog-backdrop"
+        class="absolute inset-0 z-0 cursor-default border-0 bg-black/40 p-0 backdrop-blur-2xl backdrop-saturate-150"
+        aria-label="Fechar blog — toque fora ou use voltar do telemóvel"
+      ></button>
+      <div
+        id="sobre-blog-panel"
+        class="relative z-10 flex min-h-0 flex-1 flex-col pointer-events-none [&>*]:pointer-events-auto"
+      >
+        <div class="min-h-0 flex-1 overflow-y-auto overscroll-contain bg-softblack/30 px-4 py-8 backdrop-blur-sm md:px-10 md:py-12">
+        <article class="mx-auto max-w-3xl">
+          <header class="mb-10 border-b border-champagne/20 pb-8">
+            <h2 id="sobre-blog-title" class="font-serif text-3xl text-champagne md:text-4xl">Elizabeth Silva</h2>
+            <p class="mt-2 text-sm text-forest/75 md:text-base">
+              Fotógrafa especializada em automóveis com olhar editorial — este espaço reúne um pouco da minha
+              trajetória, formação e onde atuo. <em class="text-champagne/90">(Edite os textos abaixo com seus dados reais.)</em>
+            </p>
+          </header>
+
+          <section class="mb-10">
+            <h3 class="mb-4 font-serif text-xl text-champagne md:text-2xl">Dados pessoais</h3>
+            <dl class="grid gap-3 text-sm md:grid-cols-2 md:text-base">
+              <div class="rounded-xl border border-white/10 bg-[#141417] px-4 py-3">
+                <dt class="text-xs uppercase tracking-wider text-blush">Nome completo</dt>
+                <dd class="mt-1 font-medium">Elizabeth Silva</dd>
+              </div>
+              <div class="rounded-xl border border-white/10 bg-[#141417] px-4 py-3">
+                <dt class="text-xs uppercase tracking-wider text-blush">Data de nascimento</dt>
+                <dd class="mt-1 font-medium">00 de mês de 0000 <span class="text-forest/60">(substitua)</span></dd>
+              </div>
+              <div class="rounded-xl border border-white/10 bg-[#141417] px-4 py-3">
+                <dt class="text-xs uppercase tracking-wider text-blush">Idade</dt>
+                <dd class="mt-1 font-medium">00 anos <span class="text-forest/60">(atualize)</span></dd>
+              </div>
+              <div class="rounded-xl border border-white/10 bg-[#141417] px-4 py-3 md:col-span-2">
+                <dt class="text-xs uppercase tracking-wider text-blush">Onde mora</dt>
+                <dd class="mt-1 font-medium">Cidade — UF, Brasil <span class="text-forest/60">(cidade e estado)</span></dd>
+              </div>
+            </dl>
+          </section>
+
+          <section class="mb-10">
+            <h3 class="mb-4 font-serif text-xl text-champagne md:text-2xl">Sobre mim</h3>
+            <div class="space-y-4 leading-relaxed text-forest/90">
+              <p>
+                Registro carros como peças de design, história e emoção. Gosto de misturar direção de arte, luz
+                natural e enquadramentos finos para que cada ensaio conte uma história elegante e atemporal.
+              </p>
+              <p>
+                Este parágrafo pode virar o “post” principal do seu blog: conte quando começou na fotografia, o que
+                te inspira em carros clássicos e esportivos e como é trabalhar com clientes e marcas.
+              </p>
+            </div>
+          </section>
+
+          <section class="mb-10">
+            <h3 class="mb-4 font-serif text-xl text-champagne md:text-2xl">Certificados &amp; formação</h3>
+            <ul class="list-inside list-disc space-y-2 text-forest/90 marker:text-champagne">
+              <li>Curso ou certificação — instituição, ano</li>
+              <li>Workshop de fotografia automotiva — nome, ano</li>
+              <li>Pós ou extensão em (área) — opcional</li>
+            </ul>
+          </section>
+
+          <section class="mb-10">
+            <h3 class="mb-4 font-serif text-xl text-champagne md:text-2xl">Experiência</h3>
+            <ol class="space-y-4 border-l border-champagne/25 pl-5">
+              <li class="relative">
+                <span class="absolute -left-[1.35rem] top-1.5 h-2 w-2 rounded-full bg-champagne"></span>
+                <p class="font-medium text-champagne">2024 — hoje</p>
+                <p class="text-sm text-forest/85">Fotografia automotiva freelance / ensaios particulares e marcas.</p>
+              </li>
+              <li class="relative">
+                <span class="absolute -left-[1.35rem] top-1.5 h-2 w-2 rounded-full bg-champagne/60"></span>
+                <p class="font-medium text-champagne">Ano — ano</p>
+                <p class="text-sm text-forest/85">Cargo ou projeto anterior — descreva resultados ou clientes.</p>
+              </li>
+            </ol>
+          </section>
+
+          <section class="mb-6">
+            <h3 class="mb-4 font-serif text-xl text-champagne md:text-2xl">Áreas de fotografia em que atuo</h3>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="rounded-full border border-champagne/35 bg-[#141417] px-3 py-1.5 text-xs text-forest md:text-sm"
+                >Automotiva estilizada</span>
+              <span
+                class="rounded-full border border-champagne/35 bg-[#141417] px-3 py-1.5 text-xs text-forest md:text-sm"
+                >Detalhes &amp; interiors</span>
+              <span
+                class="rounded-full border border-champagne/35 bg-[#141417] px-3 py-1.5 text-xs text-forest md:text-sm"
+                >Lifestyle com veículos</span>
+              <span
+                class="rounded-full border border-champagne/35 bg-[#141417] px-3 py-1.5 text-xs text-forest md:text-sm"
+                >Eventos &amp; encontros</span>
+              <span
+                class="rounded-full border border-champagne/35 bg-[#141417] px-3 py-1.5 text-xs text-forest md:text-sm"
+                >Marcas &amp; conteúdo para redes</span>
+            </div>
+            <p class="mt-4 text-sm text-forest/65">Ajuste as etiquetas acima às especialidades que você oferece de fato.</p>
+          </section>
+        </article>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        var files = [
+          'pictures/galeria1.jpeg',
+          'pictures/galeria2.jpeg',
+          'pictures/galeria3.jpeg',
+          'pictures/galeria4.HEIC',
+          'pictures/galeria5.HEIC',
+          'pictures/galeria6.PNG',
+          'pictures/galeria7.HEIC',
+          'pictures/galeria8.PNG',
+          'pictures/galeria9.HEIC',
+          'pictures/galeria10.PNG',
+          'pictures/galeria11.HEIC',
+          'pictures/galeria12.PNG',
+          'pictures/galeria13.HEIC',
+          'pictures/galeria14.PNG',
+          'pictures/galeria15.PNG',
+          'pictures/galeria16.PNG',
+          'pictures/galeria17.HEIC',
+          'pictures/galeria18.PNG',
+          'pictures/galeria19.PNG',
+          'pictures/galeria20.PNG',
+        ];
+
+        var modal = document.getElementById('portfolio-modal');
+        var grid = document.getElementById('portfolio-modal-grid');
+        var modalBackdrop = document.getElementById('portfolio-modal-backdrop');
+        var lightbox = document.getElementById('portfolio-lightbox');
+        var lightboxImg = document.getElementById('portfolio-lightbox-img');
+        var btnCloseLb = document.getElementById('portfolio-lightbox-close');
+        var btnPrevLb = document.getElementById('portfolio-lightbox-prev');
+        var btnNextLb = document.getElementById('portfolio-lightbox-next');
+
+        if (!modal || !grid || !lightbox || !lightboxImg) return;
+
+        var lightboxIndex = 0;
+
+        function goBackUi() {
+          try {
+            history.back();
+          } catch (e) {}
+        }
+
+        function closeLightboxDOM() {
+          lightbox.classList.add('hidden');
+          lightbox.classList.remove('flex');
+          lightbox.setAttribute('aria-hidden', 'true');
+          lightboxImg.removeAttribute('src');
+        }
+
+        function closeModalDOM() {
+          closeLightboxDOM();
+          modal.classList.add('hidden');
+          modal.classList.remove('flex');
+          modal.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+        }
+
+        function bindSwipeDownClose(el) {
+          if (!el) return;
+          var y0 = 0;
+          var track = false;
+          el.addEventListener(
+            'touchstart',
+            function (e) {
+              if (e.touches.length !== 1) return;
+              y0 = e.touches[0].clientY;
+              track = y0 < 220;
+            },
+            { passive: true }
+          );
+          el.addEventListener(
+            'touchend',
+            function (e) {
+              if (!track || !e.changedTouches[0]) {
+                track = false;
+                return;
+              }
+              track = false;
+              if (e.changedTouches[0].clientY - y0 > 85) goBackUi();
+            },
+            { passive: true }
+          );
+        }
+
+        function buildGrid() {
+          if (grid.dataset.built) return;
+          grid.dataset.built = '1';
+          files.forEach(function (src, i) {
+            var btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className =
+              'group relative aspect-square overflow-hidden rounded-xl ring-1 ring-white/10 transition hover:ring-champagne/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-champagne';
+            btn.dataset.index = String(i);
+            var img = document.createElement('img');
+            img.src = src;
+            img.alt = 'Foto ' + (i + 1) + ' do portfólio';
+            img.loading = 'lazy';
+            img.decoding = 'async';
+            img.className = 'h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]';
+            btn.appendChild(img);
+            btn.addEventListener('click', function () {
+              openLightbox(i);
+            });
+            grid.appendChild(btn);
+          });
+        }
+
+        function openModal() {
+          if (typeof window.__closeSobreBlog === 'function') window.__closeSobreBlog();
+          var wasClosed = modal.classList.contains('hidden');
+          buildGrid();
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+          modal.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+          if (wasClosed) {
+            try {
+              history.pushState(
+                { elizabethUi: 'portfolio' },
+                '',
+                window.location.pathname + window.location.search + '#portfolio'
+              );
+            } catch (e2) {}
+          }
+        }
+
+        function closeModal() {
+          closeModalDOM();
+        }
+
+        function openLightbox(index) {
+          var wasClosed = lightbox.classList.contains('hidden');
+          lightboxIndex = (index + files.length) % files.length;
+          lightboxImg.src = files[lightboxIndex];
+          lightboxImg.alt = 'Foto ' + (lightboxIndex + 1) + ' do portfólio ampliada';
+          lightbox.classList.remove('hidden');
+          lightbox.classList.add('flex');
+          lightbox.setAttribute('aria-hidden', 'false');
+          if (wasClosed) {
+            try {
+              history.pushState({ elizabethUi: 'lightbox' }, '', window.location.href);
+            } catch (e3) {}
+          }
+        }
+
+        function closeLightbox() {
+          closeLightboxDOM();
+        }
+
+        function lightboxPrev() {
+          openLightbox(lightboxIndex - 1);
+        }
+
+        function lightboxNext() {
+          openLightbox(lightboxIndex + 1);
+        }
+
+        document.querySelectorAll('a.js-open-portfolio-modal').forEach(function (link) {
+          link.addEventListener('click', function (e) {
+            e.preventDefault();
+            openModal();
+          });
+        });
+
+        if (modalBackdrop) {
+          modalBackdrop.addEventListener('click', function () {
+            goBackUi();
+          });
+        }
+
+        lightbox.addEventListener('click', function (e) {
+          if (e.target === lightbox) goBackUi();
+        });
+        btnCloseLb.addEventListener('click', function (e) {
+          e.stopPropagation();
+          goBackUi();
+        });
+        btnPrevLb.addEventListener('click', function (e) {
+          e.stopPropagation();
+          lightboxPrev();
+        });
+        btnNextLb.addEventListener('click', function (e) {
+          e.stopPropagation();
+          lightboxNext();
+        });
+
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') {
+            if (!lightbox.classList.contains('hidden')) goBackUi();
+            else if (!modal.classList.contains('hidden')) goBackUi();
+          }
+          if (!lightbox.classList.contains('hidden')) {
+            if (e.key === 'ArrowLeft') lightboxPrev();
+            if (e.key === 'ArrowRight') lightboxNext();
+          }
+        });
+
+        window.addEventListener('popstate', function () {
+          var sm = document.getElementById('sobre-blog-modal');
+          if (!lightbox.classList.contains('hidden')) {
+            closeLightboxDOM();
+            return;
+          }
+          if (sm && !sm.classList.contains('hidden')) {
+            sm.classList.add('hidden');
+            sm.classList.remove('flex');
+            sm.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            return;
+          }
+          if (!modal.classList.contains('hidden')) {
+            closeModalDOM();
+          }
+        });
+
+        bindSwipeDownClose(modal);
+        bindSwipeDownClose(lightbox);
+
+        window.__closePortfolioModal = function () {
+          closeModalDOM();
+        };
+      })();
+    </script>
+
+    <script>
+      (function () {
+        var sobreModal = document.getElementById('sobre-blog-modal');
+        var sobreBackdrop = document.getElementById('sobre-blog-backdrop');
+        if (!sobreModal) return;
+
+        function goBackUiSobre() {
+          try {
+            history.back();
+          } catch (e) {}
+        }
+
+        function closeSobreBlogDOM() {
+          sobreModal.classList.add('hidden');
+          sobreModal.classList.remove('flex');
+          sobreModal.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+        }
+
+        function openSobreBlog() {
+          if (typeof window.__closePortfolioModal === 'function') window.__closePortfolioModal();
+          var wasClosed = sobreModal.classList.contains('hidden');
+          sobreModal.classList.remove('hidden');
+          sobreModal.classList.add('flex');
+          sobreModal.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+          if (wasClosed) {
+            try {
+              history.pushState(
+                { elizabethUi: 'sobre' },
+                '',
+                window.location.pathname + window.location.search + '#sobre'
+              );
+            } catch (e2) {}
+          }
+        }
+
+        function closeSobreBlog() {
+          closeSobreBlogDOM();
+        }
+
+        window.__closeSobreBlog = closeSobreBlogDOM;
+
+        document.querySelectorAll('a.js-open-sobre-modal').forEach(function (link) {
+          link.addEventListener('click', function (e) {
+            e.preventDefault();
+            openSobreBlog();
+          });
+        });
+
+        if (sobreBackdrop) {
+          sobreBackdrop.addEventListener('click', function () {
+            goBackUiSobre();
+          });
+        }
+
+        function bindSwipeDownCloseSobre(el) {
+          if (!el) return;
+          var y0 = 0;
+          var track = false;
+          el.addEventListener(
+            'touchstart',
+            function (e) {
+              if (e.touches.length !== 1) return;
+              y0 = e.touches[0].clientY;
+              track = y0 < 220;
+            },
+            { passive: true }
+          );
+          el.addEventListener(
+            'touchend',
+            function (e) {
+              if (!track || !e.changedTouches[0]) {
+                track = false;
+                return;
+              }
+              track = false;
+              if (e.changedTouches[0].clientY - y0 > 85) goBackUiSobre();
+            },
+            { passive: true }
+          );
+        }
+        bindSwipeDownCloseSobre(sobreModal);
+
+        document.addEventListener(
+          'keydown',
+          function (e) {
+            if (e.key !== 'Escape') return;
+            if (sobreModal.classList.contains('hidden')) return;
+            e.stopPropagation();
+            goBackUiSobre();
+          },
+          true
+        );
+      })();
+    </script>
+
+    <script>
+      (function () {
+        document.querySelectorAll('a[href="#inicio"]').forEach(function (link) {
+          link.addEventListener('click', function (e) {
+            var hero = document.getElementById('inicio');
+            if (!hero) return;
+            e.preventDefault();
+            hero.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            if (history.replaceState) history.replaceState(null, '', '#inicio');
+          });
+        });
+      })();
+    </script>
     <script>
       (function () {
         var sc = document.getElementById('gallery-scroll');
@@ -513,6 +1060,50 @@
         });
 
         startAutoplay();
+      })();
+    </script>
+    <script>
+      (function () {
+        var header = document.getElementById('site-header');
+        var hero = document.getElementById('inicio');
+        var pModal = document.getElementById('portfolio-modal');
+        var pLb = document.getElementById('portfolio-lightbox');
+        var sModal = document.getElementById('sobre-blog-modal');
+        if (!header) return;
+
+        function anyModalOpen() {
+          var pm = pModal && !pModal.classList.contains('hidden');
+          var pl = pLb && !pLb.classList.contains('hidden');
+          var sm = sModal && !sModal.classList.contains('hidden');
+          return !!(pm || pl || sm);
+        }
+
+        var heroMainVisible = true;
+
+        function syncHeader() {
+          var modal = anyModalOpen();
+          var show = heroMainVisible && !modal;
+          header.classList.toggle('site-header--hidden', !show);
+          header.setAttribute('aria-hidden', show ? 'false' : 'true');
+        }
+
+        if (hero) {
+          var io = new IntersectionObserver(
+            function (entries) {
+              var e = entries[0];
+              heroMainVisible =
+                e.isIntersecting && e.intersectionRatio > 0.12 && e.boundingClientRect.bottom > 96;
+              syncHeader();
+            },
+            { threshold: [0, 0.06, 0.12, 0.2], rootMargin: '-56px 0px 0px 0px' }
+          );
+          io.observe(hero);
+        }
+
+        window.addEventListener('scroll', syncHeader, { passive: true });
+        window.addEventListener('resize', syncHeader);
+        setInterval(syncHeader, 400);
+        syncHeader();
       })();
     </script>
   </body>
