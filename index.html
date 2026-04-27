@@ -308,6 +308,36 @@
                   loading="lazy"
                 />
               </article>
+              <article
+                class="group w-[calc(100vw-7rem)] max-w-[20rem] shrink-0 snap-start overflow-hidden rounded-2xl bg-[#141417] ring-1 ring-white/10 shadow-luxe sm:max-w-[22rem] md:w-72"
+              >
+                <img
+                  src="pictures/galeria18.PNG"
+                  alt="Galeria — foto 18"
+                  class="h-52 w-full object-cover transition duration-500 group-hover:scale-105 md:h-72"
+                  loading="lazy"
+                />
+              </article>
+              <article
+                class="group w-[calc(100vw-7rem)] max-w-[20rem] shrink-0 snap-start overflow-hidden rounded-2xl bg-[#141417] ring-1 ring-white/10 shadow-luxe sm:max-w-[22rem] md:w-72"
+              >
+                <img
+                  src="pictures/galeria19.PNG"
+                  alt="Galeria — foto 19"
+                  class="h-52 w-full object-cover transition duration-500 group-hover:scale-105 md:h-72"
+                  loading="lazy"
+                />
+              </article>
+              <article
+                class="group w-[calc(100vw-7rem)] max-w-[20rem] shrink-0 snap-start overflow-hidden rounded-2xl bg-[#141417] ring-1 ring-white/10 shadow-luxe sm:max-w-[22rem] md:w-72"
+              >
+                <img
+                  src="pictures/galeria20.PNG"
+                  alt="Galeria — foto 20"
+                  class="h-52 w-full object-cover transition duration-500 group-hover:scale-105 md:h-72"
+                  loading="lazy"
+                />
+              </article>
             </div>
           </div>
         </div>
@@ -339,11 +369,11 @@
 
         <div class="mt-8 grid grid-cols-1 gap-4 text-left md:grid-cols-2">
           <a
-            href="mailto:tmartinelliaraujo@gmail.com"
+            href="mailto:jonnassillva04@gmail.com"
             class="rounded-xl border border-champagne/30 bg-[#141417] px-5 py-4 text-forest transition hover:border-champagne hover:shadow-luxe"
           >
             <span class="block text-xs uppercase tracking-[0.2em] text-champagne">Email</span>
-            <span class="mt-1 block font-medium">tmartinelliaraujo@gmail.com</span>
+            <span class="mt-1 block font-medium">jonnassillva04@gmail.com</span>
           </a>
 
           <a
@@ -390,12 +420,99 @@
           return card.offsetWidth + gap;
         }
 
+        function maxScroll() {
+          return Math.max(0, sc.scrollWidth - sc.clientWidth);
+        }
+
+        var scrollMs = 400;
+        var pauseBetweenMs = 600;
+
+        function easeOutCubic(t) {
+          return 1 - Math.pow(1 - t, 3);
+        }
+
+        function animateScrollTo(targetLeft, duration, done) {
+          var m = maxScroll();
+          targetLeft = Math.max(0, Math.min(m, targetLeft));
+          var start = sc.scrollLeft;
+          var dist = targetLeft - start;
+          if (Math.abs(dist) < 2) {
+            if (done) done();
+            return;
+          }
+          var t0 = performance.now();
+          function frame(now) {
+            var t = Math.min(1, (now - t0) / duration);
+            sc.scrollLeft = start + dist * easeOutCubic(t);
+            if (t < 1) {
+              requestAnimationFrame(frame);
+            } else if (done) {
+              done();
+            }
+          }
+          requestAnimationFrame(frame);
+        }
+
+        function goNext(done) {
+          var m = maxScroll();
+          if (m <= 0) {
+            if (done) done();
+            return;
+          }
+          if (sc.scrollLeft >= m - 4) {
+            sc.scrollLeft = 0;
+            if (done) done();
+          } else {
+            animateScrollTo(sc.scrollLeft + scrollAmount(), scrollMs, done);
+          }
+        }
+
+        function goPrev(done) {
+          var m = maxScroll();
+          if (m <= 0) {
+            if (done) done();
+            return;
+          }
+          if (sc.scrollLeft <= 4) {
+            sc.scrollLeft = m;
+            if (done) done();
+          } else {
+            animateScrollTo(sc.scrollLeft - scrollAmount(), scrollMs, done);
+          }
+        }
+
         prev.addEventListener('click', function () {
-          sc.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+          goPrev();
         });
         next.addEventListener('click', function () {
-          sc.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+          goNext();
         });
+
+        var timer;
+        function stopAutoplay() {
+          if (timer) clearTimeout(timer);
+          timer = null;
+        }
+        function startAutoplay() {
+          stopAutoplay();
+          function tick() {
+            goNext(function () {
+              timer = setTimeout(tick, pauseBetweenMs);
+            });
+          }
+          timer = setTimeout(tick, pauseBetweenMs);
+        }
+
+        sc.addEventListener('mouseenter', stopAutoplay);
+        sc.addEventListener('mouseleave', startAutoplay);
+        prev.addEventListener('mouseenter', stopAutoplay);
+        next.addEventListener('mouseenter', stopAutoplay);
+        document.addEventListener('visibilitychange', function () {
+          if (document.hidden) stopAutoplay();
+          else startAutoplay();
+        });
+
+        startAutoplay();
       })();
     </script>
   </body>
