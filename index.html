@@ -42,6 +42,13 @@
       html {
         scroll-behavior: smooth;
       }
+      .gallery-scroll {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .gallery-scroll::-webkit-scrollbar {
+        display: none;
+      }
     </style>
   </head>
   <body class="bg-cream text-forest font-sans">
@@ -81,7 +88,7 @@
         class="relative flex min-h-screen items-center justify-center overflow-hidden px-4 pt-32 text-center md:px-8"
       >
         <img
-          src="pictures/fundo.PNG"
+          src="fundo.PNG"
           alt=""
           class="absolute inset-0 h-full w-full object-cover"
           role="presentation"
@@ -100,12 +107,6 @@
           </p>
         </div>
 
-        <a
-          href="#portfolio"
-          class="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 rounded-full border border-champagne/80 bg-champagne/10 px-5 py-2 text-xs uppercase tracking-[0.2em] text-champagne transition hover:bg-champagne/20"
-        >
-          Scroll ↓
-        </a>
       </section>
 
       <section id="portfolio" class="bg-softblack px-4 py-20 md:px-8">
@@ -115,54 +116,199 @@
             <h2 class="mt-3 font-serif text-4xl text-champagne md:text-5xl">GALERIA</h2>
           </div>
 
-          <div class="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
-            <article class="group overflow-hidden rounded-2xl bg-[#141417] ring-1 ring-white/10 shadow-luxe">
-              <img
-                src="image_0.png"
-                alt="Close-up de roda clássica com raios de arame"
-                class="h-52 w-full object-cover transition duration-500 group-hover:scale-105 md:h-72"
-              />
-              <div class="p-4">
-                <h3 class="font-serif text-lg text-forest">Roda Clássica</h3>
-                <p class="mt-1 text-sm text-forest/70">Detalhes em metal e desenho atemporal.</p>
-              </div>
-            </article>
+          <div class="relative">
+            <button
+              type="button"
+              id="gallery-prev"
+              aria-label="Fotos anteriores"
+              class="absolute left-0 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-champagne/60 bg-softblack/90 text-xl text-champagne shadow-luxe backdrop-blur-sm transition hover:border-champagne hover:bg-softblack md:h-12 md:w-12 md:-translate-x-1"
+            >
+              ‹
+            </button>
+            <button
+              type="button"
+              id="gallery-next"
+              aria-label="Próximas fotos"
+              class="absolute right-0 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-champagne/60 bg-softblack/90 text-xl text-champagne shadow-luxe backdrop-blur-sm transition hover:border-champagne hover:bg-softblack md:h-12 md:w-12 md:translate-x-1"
+            >
+              ›
+            </button>
 
-            <article class="group overflow-hidden rounded-2xl bg-[#141417] ring-1 ring-white/10 shadow-luxe">
-              <img
-                src="image_2.png"
-                alt="Interior com mão feminina no volante e no câmbio"
-                class="h-52 w-full object-cover transition duration-500 group-hover:scale-105 md:h-72"
-              />
-              <div class="p-4">
-                <h3 class="font-serif text-lg text-forest">Interior Humano</h3>
-                <p class="mt-1 text-sm text-forest/70">Conexão entre elegância e presença.</p>
-              </div>
-            </article>
-
-            <article class="group overflow-hidden rounded-2xl bg-[#141417] ring-1 ring-white/10 shadow-luxe">
-              <img
-                src="image_4.png"
-                alt="Carro vintage cercado por flores em estilo lifestyle"
-                class="h-52 w-full object-cover transition duration-500 group-hover:scale-105 md:h-72"
-              />
-              <div class="p-4">
-                <h3 class="font-serif text-lg text-forest">Lifestyle Floral</h3>
-                <p class="mt-1 text-sm text-forest/70">Toque feminino com atmosfera editorial.</p>
-              </div>
-            </article>
-
-            <article class="group overflow-hidden rounded-2xl bg-[#141417] ring-1 ring-white/10 shadow-luxe">
-              <img
-                src="image_2.png"
-                alt="Visão geral de painel de controle com acabamento vintage"
-                class="h-52 w-full object-cover transition duration-500 group-hover:scale-105 md:h-72"
-              />
-              <div class="p-4">
-                <h3 class="font-serif text-lg text-forest">Painel de Controle</h3>
-                <p class="mt-1 text-sm text-forest/70">Texturas e instrumentos com sofisticação.</p>
-              </div>
-            </article>
+            <div
+              id="gallery-scroll"
+              class="gallery-scroll mx-10 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-2 md:mx-14 md:gap-6"
+            >
+              <article
+                class="group w-[calc(100vw-7rem)] max-w-[20rem] shrink-0 snap-start overflow-hidden rounded-2xl bg-[#141417] ring-1 ring-white/10 shadow-luxe sm:max-w-[22rem] md:w-72"
+              >
+                <img
+                  src="pictures/galeria1.jpeg"
+                  alt="Galeria — foto 1"
+                  class="h-52 w-full object-cover transition duration-500 group-hover:scale-105 md:h-72"
+                  loading="lazy"
+                />
+              </article>
+              <article
+                class="group w-[calc(100vw-7rem)] max-w-[20rem] shrink-0 snap-start overflow-hidden rounded-2xl bg-[#141417] ring-1 ring-white/10 shadow-luxe sm:max-w-[22rem] md:w-72"
+              >
+                <img
+                  src="pictures/galeria2.jpeg"
+                  alt="Galeria — foto 2"
+                  class="h-52 w-full object-cover transition duration-500 group-hover:scale-105 md:h-72"
+                  loading="lazy"
+                />
+              </article>
+              <article
+                class="group w-[calc(100vw-7rem)] max-w-[20rem] shrink-0 snap-start overflow-hidden rounded-2xl bg-[#141417] ring-1 ring-white/10 shadow-luxe sm:max-w-[22rem] md:w-72"
+              >
+                <img
+                  src="pictures/galeria3.jpeg"
+                  alt="Galeria — foto 3"
+                  class="h-52 w-full object-cover transition duration-500 group-hover:scale-105 md:h-72"
+                  loading="lazy"
+                />
+              </article>
+              <article
+                class="group w-[calc(100vw-7rem)] max-w-[20rem] shrink-0 snap-start overflow-hidden rounded-2xl bg-[#141417] ring-1 ring-white/10 shadow-luxe sm:max-w-[22rem] md:w-72"
+              >
+                <img
+                  src="pictures/galeria4.HEIC"
+                  alt="Galeria — foto 4"
+                  class="h-52 w-full object-cover transition duration-500 group-hover:scale-105 md:h-72"
+                  loading="lazy"
+                />
+              </article>
+              <article
+                class="group w-[calc(100vw-7rem)] max-w-[20rem] shrink-0 snap-start overflow-hidden rounded-2xl bg-[#141417] ring-1 ring-white/10 shadow-luxe sm:max-w-[22rem] md:w-72"
+              >
+                <img
+                  src="pictures/galeria5.HEIC"
+                  alt="Galeria — foto 5"
+                  class="h-52 w-full object-cover transition duration-500 group-hover:scale-105 md:h-72"
+                  loading="lazy"
+                />
+              </article>
+              <article
+                class="group w-[calc(100vw-7rem)] max-w-[20rem] shrink-0 snap-start overflow-hidden rounded-2xl bg-[#141417] ring-1 ring-white/10 shadow-luxe sm:max-w-[22rem] md:w-72"
+              >
+                <img
+                  src="pictures/galeria6.PNG"
+                  alt="Galeria — foto 6"
+                  class="h-52 w-full object-cover transition duration-500 group-hover:scale-105 md:h-72"
+                  loading="lazy"
+                />
+              </article>
+              <article
+                class="group w-[calc(100vw-7rem)] max-w-[20rem] shrink-0 snap-start overflow-hidden rounded-2xl bg-[#141417] ring-1 ring-white/10 shadow-luxe sm:max-w-[22rem] md:w-72"
+              >
+                <img
+                  src="pictures/galeria7.HEIC"
+                  alt="Galeria — foto 7"
+                  class="h-52 w-full object-cover transition duration-500 group-hover:scale-105 md:h-72"
+                  loading="lazy"
+                />
+              </article>
+              <article
+                class="group w-[calc(100vw-7rem)] max-w-[20rem] shrink-0 snap-start overflow-hidden rounded-2xl bg-[#141417] ring-1 ring-white/10 shadow-luxe sm:max-w-[22rem] md:w-72"
+              >
+                <img
+                  src="pictures/galeria8.PNG"
+                  alt="Galeria — foto 8"
+                  class="h-52 w-full object-cover transition duration-500 group-hover:scale-105 md:h-72"
+                  loading="lazy"
+                />
+              </article>
+              <article
+                class="group w-[calc(100vw-7rem)] max-w-[20rem] shrink-0 snap-start overflow-hidden rounded-2xl bg-[#141417] ring-1 ring-white/10 shadow-luxe sm:max-w-[22rem] md:w-72"
+              >
+                <img
+                  src="pictures/galeria9.HEIC"
+                  alt="Galeria — foto 9"
+                  class="h-52 w-full object-cover transition duration-500 group-hover:scale-105 md:h-72"
+                  loading="lazy"
+                />
+              </article>
+              <article
+                class="group w-[calc(100vw-7rem)] max-w-[20rem] shrink-0 snap-start overflow-hidden rounded-2xl bg-[#141417] ring-1 ring-white/10 shadow-luxe sm:max-w-[22rem] md:w-72"
+              >
+                <img
+                  src="pictures/galeria10.PNG"
+                  alt="Galeria — foto 10"
+                  class="h-52 w-full object-cover transition duration-500 group-hover:scale-105 md:h-72"
+                  loading="lazy"
+                />
+              </article>
+              <article
+                class="group w-[calc(100vw-7rem)] max-w-[20rem] shrink-0 snap-start overflow-hidden rounded-2xl bg-[#141417] ring-1 ring-white/10 shadow-luxe sm:max-w-[22rem] md:w-72"
+              >
+                <img
+                  src="pictures/galeria11.HEIC"
+                  alt="Galeria — foto 11"
+                  class="h-52 w-full object-cover transition duration-500 group-hover:scale-105 md:h-72"
+                  loading="lazy"
+                />
+              </article>
+              <article
+                class="group w-[calc(100vw-7rem)] max-w-[20rem] shrink-0 snap-start overflow-hidden rounded-2xl bg-[#141417] ring-1 ring-white/10 shadow-luxe sm:max-w-[22rem] md:w-72"
+              >
+                <img
+                  src="pictures/galeria12.PNG"
+                  alt="Galeria — foto 12"
+                  class="h-52 w-full object-cover transition duration-500 group-hover:scale-105 md:h-72"
+                  loading="lazy"
+                />
+              </article>
+              <article
+                class="group w-[calc(100vw-7rem)] max-w-[20rem] shrink-0 snap-start overflow-hidden rounded-2xl bg-[#141417] ring-1 ring-white/10 shadow-luxe sm:max-w-[22rem] md:w-72"
+              >
+                <img
+                  src="pictures/galeria13.HEIC"
+                  alt="Galeria — foto 13"
+                  class="h-52 w-full object-cover transition duration-500 group-hover:scale-105 md:h-72"
+                  loading="lazy"
+                />
+              </article>
+              <article
+                class="group w-[calc(100vw-7rem)] max-w-[20rem] shrink-0 snap-start overflow-hidden rounded-2xl bg-[#141417] ring-1 ring-white/10 shadow-luxe sm:max-w-[22rem] md:w-72"
+              >
+                <img
+                  src="pictures/galeria14.PNG"
+                  alt="Galeria — foto 14"
+                  class="h-52 w-full object-cover transition duration-500 group-hover:scale-105 md:h-72"
+                  loading="lazy"
+                />
+              </article>
+              <article
+                class="group w-[calc(100vw-7rem)] max-w-[20rem] shrink-0 snap-start overflow-hidden rounded-2xl bg-[#141417] ring-1 ring-white/10 shadow-luxe sm:max-w-[22rem] md:w-72"
+              >
+                <img
+                  src="pictures/galeria15.PNG"
+                  alt="Galeria — foto 15"
+                  class="h-52 w-full object-cover transition duration-500 group-hover:scale-105 md:h-72"
+                  loading="lazy"
+                />
+              </article>
+              <article
+                class="group w-[calc(100vw-7rem)] max-w-[20rem] shrink-0 snap-start overflow-hidden rounded-2xl bg-[#141417] ring-1 ring-white/10 shadow-luxe sm:max-w-[22rem] md:w-72"
+              >
+                <img
+                  src="pictures/galeria16.PNG"
+                  alt="Galeria — foto 16"
+                  class="h-52 w-full object-cover transition duration-500 group-hover:scale-105 md:h-72"
+                  loading="lazy"
+                />
+              </article>
+              <article
+                class="group w-[calc(100vw-7rem)] max-w-[20rem] shrink-0 snap-start overflow-hidden rounded-2xl bg-[#141417] ring-1 ring-white/10 shadow-luxe sm:max-w-[22rem] md:w-72"
+              >
+                <img
+                  src="pictures/galeria17.HEIC"
+                  alt="Galeria — foto 17"
+                  class="h-52 w-full object-cover transition duration-500 group-hover:scale-105 md:h-72"
+                  loading="lazy"
+                />
+              </article>
+            </div>
           </div>
         </div>
       </section>
@@ -170,8 +316,8 @@
       <section id="sobre" class="bg-[#121214] px-4 py-20 md:px-8">
         <div class="mx-auto grid max-w-6xl gap-10 md:grid-cols-2 md:items-center">
           <img
-            src="image_2.png"
-            alt="Fotógrafa em sessão com automóvel clássico"
+            src="perfil.jpeg"
+            alt="Foto de perfil da fotógrafa"
             class="h-80 w-full rounded-2xl object-cover shadow-luxe"
           />
           <div>
@@ -230,5 +376,27 @@
         </div>
       </div>
     </footer>
+    <script>
+      (function () {
+        var sc = document.getElementById('gallery-scroll');
+        var prev = document.getElementById('gallery-prev');
+        var next = document.getElementById('gallery-next');
+        if (!sc || !prev || !next) return;
+
+        function scrollAmount() {
+          var card = sc.querySelector('article');
+          if (!card) return 300;
+          var gap = parseFloat(window.getComputedStyle(sc).gap) || 16;
+          return card.offsetWidth + gap;
+        }
+
+        prev.addEventListener('click', function () {
+          sc.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+        });
+        next.addEventListener('click', function () {
+          sc.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+        });
+      })();
+    </script>
   </body>
 </html>
