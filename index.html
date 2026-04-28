@@ -56,7 +56,7 @@
             rgba(10, 10, 10, 0.7) 45%,
             rgba(10, 10, 10, 0.92) 100%
           ),
-          url('fundo.PNG');
+          url('midia/fundo.PNG');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -81,6 +81,27 @@
         visibility: hidden;
         pointer-events: none;
       }
+      .instagram-link:hover .instagram-label {
+        background: linear-gradient(90deg, #ff2d95 0%, #ffd84d 35%, #ff8a00 65%, #8a2be2 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .email-link:hover .email-label {
+        background: linear-gradient(90deg, #4285f4 0%, #ea4335 33%, #fbbc05 66%, #34a853 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .contact-link-icon {
+        opacity: 0;
+        transform: translateY(2px) scale(0.95);
+        transition: all 0.2s ease;
+      }
+      .contact-link:hover .contact-link-icon {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
     </style>
   </head>
   <body class="min-h-screen text-forest font-sans">
@@ -100,7 +121,7 @@
 
         <a href="#inicio" class="mx-auto shrink-0 transition hover:opacity-90">
           <img
-            src="logo.png"
+            src="midia/logo.png"
             alt="Elizabeth Silva Fotografia Automotiva"
             class="h-11 w-auto max-w-[200px] object-contain md:h-14 md:max-w-[280px]"
           />
@@ -365,6 +386,86 @@
                   loading="lazy"
                 />
               </article>
+              <article
+                class="group w-[calc(100vw-7rem)] max-w-[20rem] shrink-0 snap-start overflow-hidden rounded-2xl bg-[#141417] ring-1 ring-white/10 shadow-luxe sm:max-w-[22rem] md:w-72"
+              >
+                <img
+                  src="pictures/galeria21.jpeg"
+                  alt="Galeria — foto 21"
+                  class="h-52 w-full object-cover transition duration-500 group-hover:scale-105 md:h-72"
+                  loading="lazy"
+                />
+              </article>
+              <article
+                class="group w-[calc(100vw-7rem)] max-w-[20rem] shrink-0 snap-start overflow-hidden rounded-2xl bg-[#141417] ring-1 ring-white/10 shadow-luxe sm:max-w-[22rem] md:w-72"
+              >
+                <img
+                  src="pictures/galeria22.jpeg"
+                  alt="Galeria — foto 22"
+                  class="h-52 w-full object-cover transition duration-500 group-hover:scale-105 md:h-72"
+                  loading="lazy"
+                />
+              </article>
+              <article
+                class="group w-[calc(100vw-7rem)] max-w-[20rem] shrink-0 snap-start overflow-hidden rounded-2xl bg-[#141417] ring-1 ring-white/10 shadow-luxe sm:max-w-[22rem] md:w-72"
+              >
+                <img
+                  src="pictures/galeria23.jpeg"
+                  alt="Galeria — foto 23"
+                  class="h-52 w-full object-cover transition duration-500 group-hover:scale-105 md:h-72"
+                  loading="lazy"
+                />
+              </article>
+              <article
+                class="group w-[calc(100vw-7rem)] max-w-[20rem] shrink-0 snap-start overflow-hidden rounded-2xl bg-[#141417] ring-1 ring-white/10 shadow-luxe sm:max-w-[22rem] md:w-72"
+              >
+                <img
+                  src="pictures/galeria24.jpeg"
+                  alt="Galeria — foto 24"
+                  class="h-52 w-full object-cover transition duration-500 group-hover:scale-105 md:h-72"
+                  loading="lazy"
+                />
+              </article>
+              <article
+                class="group w-[calc(100vw-7rem)] max-w-[20rem] shrink-0 snap-start overflow-hidden rounded-2xl bg-[#141417] ring-1 ring-white/10 shadow-luxe sm:max-w-[22rem] md:w-72"
+              >
+                <img
+                  src="pictures/galeria25.HEIC"
+                  alt="Galeria — foto 25"
+                  class="h-52 w-full object-cover transition duration-500 group-hover:scale-105 md:h-72"
+                  loading="lazy"
+                />
+              </article>
+              <article
+                class="group w-[calc(100vw-7rem)] max-w-[20rem] shrink-0 snap-start overflow-hidden rounded-2xl bg-[#141417] ring-1 ring-white/10 shadow-luxe sm:max-w-[22rem] md:w-72"
+              >
+                <img
+                  src="pictures/galeria26.PNG"
+                  alt="Galeria — foto 26"
+                  class="h-52 w-full object-cover transition duration-500 group-hover:scale-105 md:h-72"
+                  loading="lazy"
+                />
+              </article>
+              <article
+                class="group w-[calc(100vw-7rem)] max-w-[20rem] shrink-0 snap-start overflow-hidden rounded-2xl bg-[#141417] ring-1 ring-white/10 shadow-luxe sm:max-w-[22rem] md:w-72"
+              >
+                <img
+                  src="pictures/galeria27.HEIC"
+                  alt="Galeria — foto 27"
+                  class="h-52 w-full object-cover transition duration-500 group-hover:scale-105 md:h-72"
+                  loading="lazy"
+                />
+              </article>
+              <article
+                class="group w-[calc(100vw-7rem)] max-w-[20rem] shrink-0 snap-start overflow-hidden rounded-2xl bg-[#141417] ring-1 ring-white/10 shadow-luxe sm:max-w-[22rem] md:w-72"
+              >
+                <img
+                  src="pictures/galeria28.PNG"
+                  alt="Galeria — foto 28"
+                  class="h-52 w-full object-cover transition duration-500 group-hover:scale-105 md:h-72"
+                  loading="lazy"
+                />
+              </article>
             </div>
           </div>
         </div>
@@ -373,7 +474,7 @@
       <section id="sobre" class="bg-[#121214]/85 px-4 py-20 backdrop-blur-xl md:px-8">
         <div class="mx-auto grid max-w-6xl gap-10 md:grid-cols-2 md:items-center">
           <img
-            src="perfil.jpeg"
+            src="midia/perfil.jpeg"
             alt="Foto de perfil da fotógrafa"
             class="h-80 w-full rounded-2xl object-cover shadow-luxe"
           />
@@ -391,45 +492,50 @@
     </main>
 
     <footer id="contato" class="border-t border-champagne/30 bg-softblack/85 px-4 py-14 backdrop-blur-xl md:px-8">
-      <div class="mx-auto max-w-5xl text-center">
-        <p class="text-sm text-forest/80">Clique para onde deseja ser redirecionado</p>
+      <div class="mx-auto max-w-5xl">
+        <div class="mb-6 text-center">
+          <h3 class="text-xs uppercase tracking-[0.3em] text-champagne">CONTATO</h3>
+          <p class="mt-2 text-sm text-forest/75">Clique para onde deseja ser redirecionado</p>
+        </div>
 
-        <div class="mt-8 grid grid-cols-1 gap-4 text-left md:grid-cols-2">
-          <a
-            href="mailto:lizziecars@gmail.com"
-            class="rounded-xl border border-champagne/30 bg-[#141417] px-5 py-4 text-forest transition hover:border-champagne hover:shadow-luxe"
-          >
-            <span class="block text-xs uppercase tracking-[0.2em] text-champagne">Email</span>
-            <span class="mt-1 block font-medium">lizziecars@gmail.com</span>
-          </a>
-
+        <div class="flex items-center justify-center gap-5 text-forest/70">
           <a
             href="https://instagram.com/lizziecars._"
             target="_blank"
             rel="noopener noreferrer"
-            class="rounded-xl border border-champagne/30 bg-[#141417] px-5 py-4 text-forest transition hover:border-champagne hover:shadow-luxe"
+            aria-label="Instagram"
+            class="contact-link instagram-link inline-flex items-center gap-1.5 transition"
           >
-            <span class="block text-xs uppercase tracking-[0.2em] text-champagne">Instagram</span>
-            <span class="mt-1 block font-medium">@lizziecars._</span>
+            <span class="instagram-label">Instagram</span>
+            <span class="contact-link-icon" aria-hidden="true">📷</span>
           </a>
-
-          <a
-            href="tel:+5561991117004"
-            class="rounded-xl border border-champagne/30 bg-[#141417] px-5 py-4 text-forest transition hover:border-champagne hover:shadow-luxe"
-          >
-            <span class="block text-xs uppercase tracking-[0.2em] text-champagne">Telefone</span>
-            <span class="mt-1 block font-medium">(61) 99111-7004</span>
+          <a href="mailto:lizziecars@gmail.com" aria-label="Email" class="contact-link email-link inline-flex items-center gap-1.5 transition">
+            <span class="email-label">Email</span>
+            <span class="contact-link-icon" aria-hidden="true">✉</span>
           </a>
-
+          <a href="tel:+5561991117004" aria-label="Telefone" class="contact-link inline-flex items-center gap-1.5 transition hover:text-champagne">
+            <span>Telefone</span>
+            <span class="contact-link-icon" aria-hidden="true">📞</span>
+          </a>
           <a
             href="https://wa.me/5561991117004"
             target="_blank"
             rel="noopener noreferrer"
-            class="rounded-xl border border-whatsapp/40 bg-[#141417] px-5 py-4 text-forest transition hover:shadow-luxe"
+            aria-label="WhatsApp"
+            class="contact-link inline-flex items-center gap-1.5 transition hover:text-whatsapp"
           >
-            <span class="block text-xs uppercase tracking-[0.2em] text-whatsapp">WhatsApp</span>
-            <span class="mt-1 block font-medium">(61) 99111-7004</span>
+            <span>WhatsApp</span>
+            <span class="contact-link-icon" aria-hidden="true">💬</span>
           </a>
+        </div>
+
+        <div class="mt-6 border-t border-white/10 pt-6 text-center text-sm text-forest/70">
+          <p>Elizabeth Silva - Todos os direitos reservados.</p>
+          <p class="mt-2">
+            <a href="mailto:tmartinelliaraujo@gmail.com" class="transition hover:text-champagne"
+              >2026 &copy; By Martinelli</a
+            >
+          </p>
         </div>
       </div>
     </footer>
@@ -453,10 +559,34 @@
         class="relative z-10 flex min-h-0 flex-1 flex-col pointer-events-none [&>*]:pointer-events-auto"
       >
         <div class="min-h-0 flex-1 overflow-y-auto overscroll-contain bg-softblack/30 p-3 backdrop-blur-sm md:p-5">
-          <p class="mb-3 text-center text-xs text-forest/70 md:text-sm">Toque ou clique numa foto para ampliar.</p>
+          <div class="mb-3 flex items-center justify-center gap-2">
+            <button
+              type="button"
+              id="portfolio-toggle-fotos"
+              class="rounded-full border border-champagne/60 bg-champagne/20 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.2em] text-champagne transition hover:bg-champagne/30"
+            >
+              Fotos
+            </button>
+            <button
+              type="button"
+              id="portfolio-toggle-videos"
+              class="rounded-full border border-white/20 bg-softblack/40 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.2em] text-forest/80 transition hover:border-white/35 hover:text-forest"
+            >
+              Vídeos
+            </button>
+          </div>
+
+          <p id="portfolio-media-hint" class="mb-3 text-center text-xs text-forest/70 md:text-sm">
+            Toque ou clique numa foto para ampliar.
+          </p>
+
           <div
             id="portfolio-modal-grid"
             class="mx-auto grid max-w-[1600px] grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7"
+          ></div>
+          <div
+            id="portfolio-video-grid"
+            class="mx-auto hidden max-w-[1600px] grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7"
           ></div>
         </div>
       </div>
@@ -524,12 +654,18 @@
         <article class="mx-auto max-w-3xl">
           <header class="mb-10 border-b border-champagne/20 pb-8">
             <h2 id="sobre-blog-title" class="font-serif text-3xl text-champagne md:text-4xl">Elizabeth Silva</h2>
-            <p class="mt-2 text-sm text-forest/75 md:text-base">
+            <p class="mt-2 text-justify text-sm text-forest/75 md:text-base">
               Desde criança sou apaixonada em carros, desde 2023 passei a ir em eventos e fotografar carros. Em 2024
               durante 6 meses todos os sábados eu ia para o aeroporto para fotografar carros e depois ia ao pontão
               fazer o mesmo, em 2025 surgiu uma paixão por motos o que fez com que eu começasse a as fotografar também.
             </p>
           </header>
+
+          <img
+            src="midia/sobremim.jpeg"
+            alt="Foto de perfil de Elizabeth Silva"
+            class="mb-10 h-80 w-full rounded-2xl object-cover shadow-luxe"
+          />
 
           <section class="mb-10">
             <h3 class="mb-4 font-serif text-xl text-champagne md:text-2xl">Dados pessoais</h3>
@@ -559,8 +695,8 @@
 
           <section class="mb-10">
             <h3 class="mb-4 font-serif text-xl text-champagne md:text-2xl">Sobre mim</h3>
-            <div class="space-y-4 leading-relaxed text-forest/90">
-              <p class="indent-8">
+            <div class="space-y-4 text-justify leading-relaxed text-forest/90">
+              <p>
                 Sou uma pessoa intensamente extrovertida, movida por energia, conexão e propósito em tudo o que faço.
                 Tenho uma paixão por carros que vem desde a infância — não é apenas um interesse, é parte da minha
                 essência, algo que me inspira, me motiva e me faz querer ir sempre além. Ao longo da vida, aprendi a
@@ -568,13 +704,13 @@
                 ajuda, apoio e parceria sempre que alguém precisa. Acredito que pequenas atitudes podem gerar grandes
                 impactos, e é isso que me impulsiona no dia a dia.
               </p>
-              <p class="indent-8">
+              <p>
                 Sou determinada na busca pelos meus sonhos e não me contento com pouco quando sei do meu potencial.
                 Tenho coragem para enfrentar desafios e encaro cada obstáculo como uma oportunidade de crescimento. O
                 que ainda não sei não me limita — pelo contrário, me motiva. Tenho facilidade em aprender, me adapto
                 rápido a novas situações e estou sempre em evolução, buscando melhorar e me superar constantemente.
               </p>
-              <p class="indent-8">
+              <p>
                 Carrego comigo uma vontade genuína de crescer, conquistar meus objetivos e, ao mesmo tempo, contribuir
                 positivamente com tudo e todos ao meu redor. Sou movida por sonhos, mas também por atitude — porque
                 acredito que não basta sonhar, é preciso agir, aprender e persistir até transformar tudo isso em
@@ -678,30 +814,109 @@
     <script>
       (function () {
         var files = [
-          'pictures/galeria1.jpeg',
-          'pictures/galeria2.jpeg',
-          'pictures/galeria3.jpeg',
-          'pictures/galeria4.HEIC',
-          'pictures/galeria5.HEIC',
-          'pictures/galeria6.PNG',
-          'pictures/galeria7.HEIC',
-          'pictures/galeria8.PNG',
-          'pictures/galeria9.HEIC',
-          'pictures/galeria10.PNG',
-          'pictures/galeria11.HEIC',
-          'pictures/galeria12.PNG',
-          'pictures/galeria13.HEIC',
-          'pictures/galeria14.PNG',
-          'pictures/galeria15.PNG',
-          'pictures/galeria16.PNG',
-          'pictures/galeria17.HEIC',
-          'pictures/galeria18.PNG',
-          'pictures/galeria19.PNG',
-          'pictures/galeria20.PNG',
+          'pictures/IMG_2941.jpg.jpeg',
+          'pictures/e0d5e312bfdc4c718713cf64d6d6288e(1).jpg.jpeg',
+          'pictures/e0d5e312bfdc4c718713cf64d6d6288e(3).jpg.jpeg',
+          'pictures/Screenshot_20260428_124049_Video Player.jpg.jpeg',
+          'pictures/Screenshot_20260428_124335_Video Player.jpg.jpeg',
+          'pictures/Screenshot_20260428_125708_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_125714_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_125724_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_125732_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_125738_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_125751_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_125756_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_125800_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_125806_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_125812_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_125819_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_125825_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_125831_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_125836_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_125841_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_125846_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_125850_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_125856_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_125902_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_125911_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_125919_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_125925_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_125930_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_125937_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_125942_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_125950_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_125955_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130002_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130011_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130022_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130027_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130032_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130038_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130045_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130050_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130055_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130100_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130107_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130111_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130121_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130127_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130132_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130137_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130141_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130145_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130151_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130158_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130203_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130208_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130213_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130218_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130224_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130230_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130234_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130239_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130243_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130248_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130253_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130301_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130305_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130310_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130315_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130319_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130325_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130338_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130343_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130415_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130420_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130425_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130430_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130440_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130643_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130649_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130659_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130704_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130712_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130719_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130725_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130729_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130735_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130741_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130747_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130754_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130848_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130855_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130902_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130906_Gallery.jpg.jpeg',
+          'pictures/Screenshot_20260428_130911_Gallery.jpg.jpeg',
         ];
+        var videoFiles = ['video/edit.mp4'];
 
         var modal = document.getElementById('portfolio-modal');
         var grid = document.getElementById('portfolio-modal-grid');
+        var videoGrid = document.getElementById('portfolio-video-grid');
+        var hint = document.getElementById('portfolio-media-hint');
+        var toggleFotos = document.getElementById('portfolio-toggle-fotos');
+        var toggleVideos = document.getElementById('portfolio-toggle-videos');
+        var galleryScroll = document.getElementById('gallery-scroll');
         var modalBackdrop = document.getElementById('portfolio-modal-backdrop');
         var lightbox = document.getElementById('portfolio-lightbox');
         var lightboxImg = document.getElementById('portfolio-lightbox-img');
@@ -712,6 +927,7 @@
         if (!modal || !grid || !lightbox || !lightboxImg) return;
 
         var lightboxIndex = 0;
+        var activeMedia = 'fotos';
 
         function goBackUi() {
           try {
@@ -764,6 +980,9 @@
         function buildGrid() {
           if (grid.dataset.built) return;
           grid.dataset.built = '1';
+          function resolvePortfolioPath(src) {
+            return src.replace(/^pictures\//, 'midia/pictures/');
+          }
           files.forEach(function (src, i) {
             var btn = document.createElement('button');
             btn.type = 'button';
@@ -771,7 +990,7 @@
               'group relative aspect-square overflow-hidden rounded-xl ring-1 ring-white/10 transition hover:ring-champagne/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-champagne';
             btn.dataset.index = String(i);
             var img = document.createElement('img');
-            img.src = src;
+            img.src = encodeURI(resolvePortfolioPath(src));
             img.alt = 'Foto ' + (i + 1) + ' do portfólio';
             img.loading = 'lazy';
             img.decoding = 'async';
@@ -784,10 +1003,100 @@
           });
         }
 
+        function buildVideoGrid() {
+          if (!videoGrid || videoGrid.dataset.built) return;
+          videoGrid.dataset.built = '1';
+          if (!videoFiles.length) {
+            var empty = document.createElement('p');
+            empty.className = 'col-span-full text-center text-sm text-forest/70';
+            empty.textContent = 'Nenhum vídeo disponível no momento.';
+            videoGrid.appendChild(empty);
+            return;
+          }
+          videoFiles.forEach(function (src, i) {
+            var card = document.createElement('article');
+            card.className =
+              'overflow-hidden rounded-2xl bg-[#141417] ring-1 ring-white/10 shadow-luxe aspect-square';
+            var ext = src.split('.').pop().toLowerCase();
+            var fullSrc = encodeURI(src.replace(/^video\//, 'midia/video/'));
+            if (['mp4', 'webm', 'ogg', 'mov', 'm4v'].indexOf(ext) !== -1) {
+              var vid = document.createElement('video');
+              vid.controls = true;
+              vid.preload = 'metadata';
+              vid.className = 'h-full w-full bg-black object-contain';
+              vid.src = fullSrc;
+              card.appendChild(vid);
+            } else {
+              var img = document.createElement('img');
+              img.src = fullSrc;
+              img.alt = 'Vídeo ' + (i + 1);
+              img.loading = 'lazy';
+              img.decoding = 'async';
+              img.className = 'h-full w-full object-cover';
+              card.appendChild(img);
+            }
+            videoGrid.appendChild(card);
+          });
+        }
+
+        function setPortfolioTab(tab) {
+          activeMedia = tab === 'videos' ? 'videos' : 'fotos';
+          if (grid) grid.classList.toggle('hidden', activeMedia !== 'fotos');
+          if (videoGrid) {
+            videoGrid.classList.toggle('hidden', activeMedia !== 'videos');
+            videoGrid.classList.toggle('grid', activeMedia === 'videos');
+          }
+          if (hint) {
+            hint.textContent =
+              activeMedia === 'fotos'
+                ? 'Toque ou clique numa foto para ampliar.'
+                : 'Selecione um vídeo para assistir.';
+          }
+          if (toggleFotos) {
+            toggleFotos.className =
+              activeMedia === 'fotos'
+                ? 'rounded-full border border-champagne/60 bg-champagne/20 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.2em] text-champagne transition hover:bg-champagne/30'
+                : 'rounded-full border border-white/20 bg-softblack/40 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.2em] text-forest/80 transition hover:border-white/35 hover:text-forest';
+          }
+          if (toggleVideos) {
+            toggleVideos.className =
+              activeMedia === 'videos'
+                ? 'rounded-full border border-champagne/60 bg-champagne/20 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.2em] text-champagne transition hover:bg-champagne/30'
+                : 'rounded-full border border-white/20 bg-softblack/40 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.2em] text-forest/80 transition hover:border-white/35 hover:text-forest';
+          }
+        }
+
+        function buildCarousel() {
+          if (!galleryScroll || galleryScroll.dataset.built) return;
+          galleryScroll.dataset.built = '1';
+          galleryScroll.innerHTML = '';
+          function resolvePortfolioPath(src) {
+            return src.replace(/^pictures\//, 'midia/pictures/');
+          }
+          files.forEach(function (src, i) {
+            var card = document.createElement('article');
+            card.className =
+              'group w-[calc(100vw-7rem)] max-w-[20rem] shrink-0 snap-start overflow-hidden rounded-2xl bg-[#141417] ring-1 ring-white/10 shadow-luxe sm:max-w-[22rem] md:w-72';
+            var img = document.createElement('img');
+            img.src = encodeURI(resolvePortfolioPath(src));
+            img.alt = 'Galeria — foto ' + (i + 1);
+            img.loading = 'lazy';
+            img.decoding = 'async';
+            img.className = 'h-52 w-full object-cover transition duration-500 group-hover:scale-105 md:h-72';
+            card.appendChild(img);
+            galleryScroll.appendChild(card);
+          });
+        }
+
+        buildCarousel();
+
         function openModal() {
           if (typeof window.__closeSobreBlog === 'function') window.__closeSobreBlog();
           var wasClosed = modal.classList.contains('hidden');
           buildGrid();
+          buildVideoGrid();
+          setPortfolioTab('fotos');
+          buildCarousel();
           modal.classList.remove('hidden');
           modal.classList.add('flex');
           modal.setAttribute('aria-hidden', 'false');
@@ -810,7 +1119,7 @@
         function openLightbox(index) {
           var wasClosed = lightbox.classList.contains('hidden');
           lightboxIndex = (index + files.length) % files.length;
-          lightboxImg.src = files[lightboxIndex];
+          lightboxImg.src = encodeURI(files[lightboxIndex].replace(/^pictures\//, 'midia/pictures/'));
           lightboxImg.alt = 'Foto ' + (lightboxIndex + 1) + ' do portfólio ampliada';
           lightbox.classList.remove('hidden');
           lightbox.classList.add('flex');
@@ -894,6 +1203,16 @@
 
         bindSwipeDownClose(modal);
         bindSwipeDownClose(lightbox);
+        if (toggleFotos) {
+          toggleFotos.addEventListener('click', function () {
+            setPortfolioTab('fotos');
+          });
+        }
+        if (toggleVideos) {
+          toggleVideos.addEventListener('click', function () {
+            setPortfolioTab('videos');
+          });
+        }
 
         window.__closePortfolioModal = function () {
           closeModalDOM();
@@ -1029,8 +1348,8 @@
           return Math.max(0, sc.scrollWidth - sc.clientWidth);
         }
 
-        var scrollMs = 400;
-        var pauseBetweenMs = 600;
+        var scrollMs = 350;
+        var pauseBetweenMs = 650;
 
         function easeOutCubic(t) {
           return 1 - Math.pow(1 - t, 3);
@@ -1111,7 +1430,9 @@
         sc.addEventListener('mouseenter', stopAutoplay);
         sc.addEventListener('mouseleave', startAutoplay);
         prev.addEventListener('mouseenter', stopAutoplay);
+        prev.addEventListener('mouseleave', startAutoplay);
         next.addEventListener('mouseenter', stopAutoplay);
+        next.addEventListener('mouseleave', startAutoplay);
         document.addEventListener('visibilitychange', function () {
           if (document.hidden) stopAutoplay();
           else startAutoplay();
